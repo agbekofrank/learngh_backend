@@ -1,0 +1,14 @@
+{
+    "builds": [
+      {
+        "src": "suacodebackend/wsgi.py",
+        "use": "@vercel/python"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "suacodebackend/wsgi.py"
+      }
+    ]
+}
