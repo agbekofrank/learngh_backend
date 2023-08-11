@@ -15,11 +15,15 @@ from pathlib import Path
 
 import dj_database_url
 
-env = environ.Env()
-# reading .env file
-environ.Env.read_env()
+
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent
+
+env = environ.Env()
+# reading .env file
+environ.Env.read_env(env_file=str(BASE_DIR) + '/.env')
+
 
 
 # Quick-start development settings - unsuitable for production
@@ -30,6 +34,7 @@ BASE_DIR = Path(__file__).resolve().parent
 # bf0d3b31769a67858f6258bc602145533684ac1015d1ccca
 SECRET_KEY = env("SECRET_KEY")
 
+print(SECRET_KEY)
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
 DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
