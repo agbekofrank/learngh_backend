@@ -27,6 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECRET_KEY = os.environ.get('django-insecure-_##il-ylslt_-$a+^)*d*(lttbjw-y$e719#1t%)m(-pc%7v6@')
+# bf0d3b31769a67858f6258bc602145533684ac1015d1ccca
 SECRET_KEY = env("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -161,6 +162,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Update database configuration from $DATABASE_URL.
+
+CSRF_TRUSTED_ORIGINS=['https://learngh-backend-production.up.railway.app']
 
 # db_from_env = dj_database_url.config(conn_max_age=1800)
 # DATABASES['default'].update(db_from_env)
