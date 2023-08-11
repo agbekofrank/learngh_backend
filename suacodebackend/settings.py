@@ -33,7 +33,7 @@ SECRET_KEY = env("SECRET_KEY")
 # DEBUG = True
 DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 
-ALLOWED_HOSTS = ['.railway.app', 'http://localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['*']
 CSRF_TRUSTED_ORIGINS = ['https://*.railway.app']
 CORS_ALLOWED_ORIGINS = [
     'https://suacodefrontend.netlify.app', 'http://localhost:3000'
@@ -162,5 +162,9 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Update database configuration from $DATABASE_URL.
 
-db_from_env = dj_database_url.config(conn_max_age=1800)
-DATABASES['default'].update(db_from_env)
+# db_from_env = dj_database_url.config(conn_max_age=1800)
+# DATABASES['default'].update(db_from_env)
+DATABASE_URL=env("DATABASE_URL")
+DATABASES={
+    "default":dj_database_url.config(default=DATABASE_URL,conn_max_age=1800),
+}
