@@ -31,7 +31,7 @@ load_dotenv(os.path.join(BASE_DIR,".env"))
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECRET_KEY = os.environ.get("SECRET_KEY")
 
-SECRET_KEY = os.getenv("DJANGO_SECRET_KEY")
+SECRET_KEY = os.getenv(environ_name="DJANGO_SECRET_KEY")
 
 
 print('this', SECRET_KEY)
@@ -179,3 +179,4 @@ DATABASE_URL = os.getenv("DJANGO_DATABASE_URL")
 DATABASES = {
     "default": dj_database_url.config(default=DATABASE_URL, conn_max_age=1800),
 }
+print(DATABASE_URL)
