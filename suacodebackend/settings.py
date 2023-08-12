@@ -33,6 +33,7 @@ print('this', SECRET_KEY)
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
 DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
+print(DEBUG)
 
 ALLOWED_HOSTS = ['*']
 CSRF_TRUSTED_ORIGINS = ['https://*.railway.app']
@@ -163,11 +164,11 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Update database configuration from $DATABASE_URL.
 
-CSRF_TRUSTED_ORIGINS=['https://learngh-backend-production.up.railway.app']
+CSRF_TRUSTED_ORIGINS = ['https://learngh-backend-production.up.railway.app']
 
 # db_from_env = dj_database_url.config(conn_max_age=1800)
 # DATABASES['default'].update(db_from_env)
-DATABASE_URL=env("DATABASE_URL")
-DATABASES={
-    "default":dj_database_url.config(default=DATABASE_URL,conn_max_age=1800),
+DATABASE_URL = env("DATABASE_URL")
+DATABASES = {
+    "default": dj_database_url.config(default=DATABASE_URL, conn_max_age=1800),
 }
