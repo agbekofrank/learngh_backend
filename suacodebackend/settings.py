@@ -31,7 +31,7 @@ load_dotenv(os.path.join(BASE_DIR,".env"))
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECRET_KEY = os.environ.get("SECRET_KEY")
 
-SECRET_KEY = os.getenv("SECRET_KEY")
+SECRET_KEY = os.getenv("DJANGO_SECRET_KEY")
 
 
 print('this', SECRET_KEY)
@@ -175,7 +175,7 @@ CSRF_TRUSTED_ORIGINS = ['https://learngh-backend-production.up.railway.app']
 # db_from_env = dj_database_url.config(conn_max_age=1800)
 # DATABASES['default'].update(db_from_env)
 # DATABASE_URL = env("DATABASE_URL")
-DATABASE_URL = os.getenv("DATABASE_URL")
+DATABASE_URL = os.getenv("DJANGO_DATABASE_URL")
 DATABASES = {
     "default": dj_database_url.config(default=DATABASE_URL, conn_max_age=1800),
 }
