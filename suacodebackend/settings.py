@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 import os
 import environ
 from pathlib import Path
+from dotenv import load_dotenv
+
 
 import dj_database_url
 
@@ -20,19 +22,23 @@ env = environ.Env()
 environ.Env.read_env()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent
+load_dotenv(os.path.join(BASE_DIR,".env"))
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env("SECRET_KEY")
+# SECRET_KEY = os.environ.get("SECRET_KEY")
+
+SECRET_KEY = os.getenv("SECRET_KEY")
+
 
 print('this', SECRET_KEY)
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
-DEBUG = env('DJANGO_DEBUG') == 'False'
+DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 print(DEBUG)
 
 ALLOWED_HOSTS = ['*']
@@ -168,7 +174,8 @@ CSRF_TRUSTED_ORIGINS = ['https://learngh-backend-production.up.railway.app']
 
 # db_from_env = dj_database_url.config(conn_max_age=1800)
 # DATABASES['default'].update(db_from_env)
-DATABASE_URL = env("DATABASE_URL")
+# DATABASE_URL = env("DATABASE_URL")
+DATABASE_URL = os.getenv("DATABASE_URL")
 DATABASES = {
     "default": dj_database_url.config(default=DATABASE_URL, conn_max_age=1800),
 }
