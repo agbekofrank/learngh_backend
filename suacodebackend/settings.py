@@ -99,11 +99,11 @@ WSGI_APPLICATION = 'suacodebackend.wsgi.application'
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': env("DATABASE_NAME"),
-#         'USER': env("DATABASE_USER"),
-#         'PASSWORD': env("DATABASE_PASSWORD"),
-#         'HOST': env("DATABASE_HOST"),
-#         'PORT': env("DATABASE_PORT"),
+#         'NAME': env("DJANGO_DATABASE_NAME"),
+#         'USER': env("DJANGO_DATABASE_USER"),
+#         'PASSWORD': env("DJANGO_DATABASE_PASSWORD"),
+#         'HOST': env("DJANGO_DATABASE_HOST"),
+#         'PORT': env("DJANGO_DATABASE_PORT"),
 #     }
 # }
 
@@ -165,7 +165,7 @@ CSRF_TRUSTED_ORIGINS = ['https://learngh-backend-production.up.railway.app']
 # db_from_env = dj_database_url.config(conn_max_age=1800)
 # DATABASES['default'].update(db_from_env)
 # DATABASE_URL = env("DATABASE_URL")
-DATABASE_URL = os.getenv("DJANGO_DATABASE_URL")
+DATABASE_URL = env("DJANGO_DATABASE_URL")
 DATABASES = {
     "default": dj_database_url.config(default=DATABASE_URL, conn_max_age=1800),
 }
